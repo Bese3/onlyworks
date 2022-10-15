@@ -6,7 +6,7 @@
 int merge(int a[] ,  int i ,int b[] , int j , int r[])
 {
   if ( i == 0 && j == 0)
-        return;
+        return 0;
 
       if ( i ==0)
       {
