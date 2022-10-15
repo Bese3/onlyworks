@@ -4,32 +4,32 @@
 
 
 
-  int merge(int a[] ,  int i ,int b[] , int j , int r[]);
+  int merge(long int a[] ,  int i ,long int b[] , int j , long int r[]);
 
 int main()
 {
-    int array1[] = {23,43,13,54,65,76,32,32,43};
-     int array2[] ={34,21,12,65,74,56,98,89};
-     int result[17];
-    int a = 9;
-    int b = 8;
+    long int array1[] = {23,45,67,87,98};
+    long  int array2[] ={12,21,32,53,35};
+  long    int result[7];
+    int a = 5;
+    int b = 5;
      merge(array1 , a, array2 ,b ,result);
-    for (int k=0;k<17;k++)
-        printf("%d" , merge(array1 , a, array2 ,b ,result));
+    for (int k=0;k < a+b;k++)
+        printf("%d\n" , result[k]);
  return (0);
 }
 
-int merge(int a[] ,  int i ,int b[] , int j , int r[])
+int merge(long int a[] ,  int i ,long int b[] , int j , long int r[])
 {
   if (i != 0 && j!=0)
   {
-      if (j=0)
+      if (j==0)
       {
           r[0] = a[0];
           merge(a+1,i-1 , b  , j ,r+1);
 
       }
-      if (i=0)
+      else if (i==0)
       {
           r[0] = b[0];
           merge(a ,i , b+1 ,j-1,r+1);
