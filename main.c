@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "main.h"
 
 
 
-int merge(int a[] ,  int i ,int b[] , int j , int r[])
+  int merge(int a[] ,  int i ,int b[] , int j , int r[])
 {
   if ( i == 0 && j == 0)
         return 0;
@@ -40,4 +41,5 @@ int main()
      merge(array1 , a, array2 ,b ,result);
     for (int k=0;k<17;k++)
         printf("%d" , merge(array1 , a, array2 ,b ,result));
+ return (0);
 }
