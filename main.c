@@ -15,7 +15,7 @@ int main()
     int b = 8;
      merge(array1 , a, array2 ,b ,result);
     for (int k=0;k<17;k++)
-        printf("" , merge(array1 , a, array2 ,b ,result));
+        printf("%d" , merge(array1 , a, array2 ,b ,result));
  return (0);
 }
 
