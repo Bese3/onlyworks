@@ -15,7 +15,7 @@ int main()
     int b = 5;
      merge(array1 , a, array2 ,b ,result);
     for (int k=0;k < a+b;k++)
-        printf("%d\n" , result[k]);
+        printf("%ld\n" , result[k]);
  return (0);
 }
 
