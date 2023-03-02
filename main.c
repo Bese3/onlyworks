@@ -4,7 +4,25 @@
 
 
 
-  int merge(long int a[] ,  int i ,long int b[] , int j , long int r[]);
+
+
+int main()
+{
+   int num = 9;
+   int pc =num | 0b0110;
+   printf("%d" , pc);
+
+
+
+
+
+}
+
+
+
+
+
+/*int merge(long int a[] ,  int i ,long int b[] , int j , long int r[]);
 
 int main()
 {
@@ -23,30 +41,21 @@ int merge(long int a[] ,  int i ,long int b[] , int j , long int r[])
 {
   if (i != 0 && j!=0)
   {
-      if (j==0)
+      if (j==0 || a[i] < b[j])
       {
           r[0] = a[0];
           merge(a+1,i-1 , b  , j ,r+1);
 
       }
-      else if (i==0)
+      else if (i==0 || a[i] > b[j])
       {
           r[0] = b[0];
           merge(a ,i , b+1 ,j-1,r+1);
 
-      }
-      else if (a[0] < b[0])
-      {
-          r[0] = a[0];
-          merge(a+1 , i-1 ,b , j ,r+1);
-      }
-      else
-      {
-          r[0] = b[0];
-          merge(a ,i , b+1 ,j-1 ,r+1);
       }
   }
   else
     return (0);
 
 }
+*/
