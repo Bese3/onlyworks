@@ -1,1 +1,0 @@
-print(add_tuple(tuple_a, ()))
