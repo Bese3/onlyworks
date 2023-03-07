@@ -23,9 +23,11 @@
    insert_end(&root , 43);
    insert_end(&root , 4563);
    insert_end(&root , 4576);
-   insert_end(&root , 4543);
    insert_middle(root->next , 3);
    insert_beginning(&root , 201);
+   insert_sorted(&root , 4567);
+   insert_sorted(&root , 5000);
+
 
 
 
@@ -97,4 +99,23 @@
     new_node->next = add->next;
     add->next = new_node;
     add = new_node;
+  } 
+  void insert_sorted(node** root , int value)
+  {
+    if (*root == NULL ||(*root)->x > value)
+    {
+      insert_beginning(&root , value);
+      return;
+    }
+    node* curr = * root;
+    while(curr->next != NULL)
+    {
+      if (curr->next->x > value)
+      {
+        insert_middle(curr , value);
+        return;
+      }
+      curr = curr->next;
+    }
+    insert_middle(curr , value);
   }
