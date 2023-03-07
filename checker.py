@@ -1,11 +1,9 @@
 # !/usr/bin/python3
 
-add_tuple = __import__('work5').add_tuple
+delete_at = __import__('work9').delete_at
 
-tuple_a = (1, 89)
-tuple_b = (88, 11)
-new_tuple = add_tuple(tuple_a, tuple_b)
-print(new_tuple)
-
-print(add_tuple(tuple_a, (1, )))
-print(add_tuple(tuple_a, ()))
+my_list = [1, 2, 3, 4, 5]
+idx = 1
+new_list = delete_at(my_list, idx)
+print(new_list)
+print(my_list)
