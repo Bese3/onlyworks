@@ -1,7 +1,11 @@
+#define _CRTDBG_MAP_ALLOC
 #include<stdio.h>
 #include<stdlib.h>
+#include<crtdbg.h>
+
 /* initializing linked list with astruct and
  * adding value using defined functions.
+ * deallocated at last.
  */
 
  typedef struct node{
@@ -27,6 +31,19 @@
     }
     curr->next = new_node;
   }
+  void deallocate(node** root)
+  {
+   node* curr = *root;
+   while(curr != NULL)
+   {
+    node* deal = curr;
+    curr = curr->next;
+    free(deal);
+   }
+ *root = NULL;
+
+  }
+
 
   int main()
   {
@@ -47,6 +64,8 @@
     printf("%d\n" , list->x);
     i++;
   }
+  deallocate(&root);
+  _CrtDumpMemoryLeaks();
  printf("linked list with %d values is added\n" , i);
 
 
