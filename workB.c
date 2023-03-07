@@ -4,9 +4,9 @@
 #include<crtdbg.h>
 #include"list.h"
 
-/* initializing linked list with astruct and
- * adding value using defined functions.
- * deallocated at last.
+/* initializing linked list with a struct and
+ * adding values using defined functions.
+ * deallocating at last.
  */
 
 
