@@ -17,19 +17,29 @@
   int main()
   {
    node* root = malloc(sizeof(node));
-   root->x = 5;
+   root->x = 2;
    root->next = NULL;
+  
 
-   insert_end(&root , 43);
-   insert_end(&root , 4563);
-   insert_end(&root , 4563);
-   insert_end(&root , 4576);
-   insert_middle(root->next , 3);
-   insert_middle(root->next , 3);
-   insert_beginning(&root , 201);
-   insert_sorted(&root , 4567);
-   insert_sorted(&root , 5000);
-   delete_list(&root , 4563);
+
+   insert_end(&root , 3);
+   insert_end(&root , 4);
+   insert_end(&root , 5);
+   insert_end(&root , 6);
+   delete_list(&root , 5);
+    
+   root->next->next->next->next = root;
+    int x = has_loop(root);
+
+   if(x == 1)
+   {
+    printf("linked list has a loop\n");
+    return 1;
+   }
+
+   
+  
+
 
 
 
@@ -52,7 +62,7 @@
 
 
 
- void  insert_end(node** root , int value)
+  void  insert_end(node** root , int value)
    {
      node* new_node = malloc(sizeof(node));
      if (new_node == NULL)
@@ -69,8 +79,9 @@
         curr = curr->next;
      }
       curr->next = new_node;
+      new_node->next = NULL;
    }
- void deallocate(node** root)
+  void deallocate(node** root)
   {
    node* curr = *root;
    while(curr != NULL)
@@ -102,7 +113,7 @@
     new_node->next = add->next;
     add->next = new_node;
     add = new_node;
-  } 
+  }
   void insert_sorted(node** root , int value)
   {
     if (*root == NULL ||(*root)->x > value)
@@ -128,20 +139,41 @@
     {
       return;
     }
+       
+       /*if((*root)->x == value)
+          {
+           node* removed = *root;
+           (*root) = (*root)->next;
+           free(removed);
+           return;
+          }*/
+       
      
-     for(node* curr = *root; curr->next != NULL; curr = curr->next)
+   for(node* curr = *root; curr->next != NULL; curr = curr->next)
      {
-      
-      
-        do
+
+         while(curr->next->x == value)
           {
            node* removed = curr->next;
            curr->next = curr->next->next;
            free(removed);
-          }while(curr->next->x == value);
-      
+           return;
+          }
+
      }
-
-         
-
+  }
+  int has_loop(node* root)
+  {
+    node* slow = root;
+    node* fast = root;
+    while(slow != NULL && fast != NULL && fast->next != NULL)
+    {
+      slow = slow->next;
+      fast = fast->next->next;
+      if(fast ==slow)
+      {
+        return 1;
+      }
+    }
+  return 0; 
   }

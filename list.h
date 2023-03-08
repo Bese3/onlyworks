@@ -12,4 +12,5 @@ typedef struct node{
   void insert_middle(node* add , int value);
   void insert_sorted(node** root , int value);
   void delete_list(node** root , int value);
+  int has_loop(node* root);
   #endif/*LIST_H*/

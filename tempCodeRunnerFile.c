@@ -1,1 +1,0 @@
-void insert_beginning(node** root , int value)
