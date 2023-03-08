@@ -19,7 +19,7 @@
    node* root = malloc(sizeof(node));
    root->x = 2;
    root->next = NULL;
-  
+
 
 
    insert_end(&root , 3);
@@ -27,7 +27,9 @@
    insert_end(&root , 5);
    insert_end(&root , 6);
    delete_list(&root , 5);
-    
+   delete_list(&root , 6);
+   insert_beginning(&root , 1);
+
    root->next->next->next->next = root;
     int x = has_loop(root);
 
@@ -37,8 +39,8 @@
     return 1;
    }
 
-   
-  
+
+
 
 
 
@@ -139,7 +141,7 @@
     {
       return;
     }
-       
+
        /*if((*root)->x == value)
           {
            node* removed = *root;
@@ -147,8 +149,8 @@
            free(removed);
            return;
           }*/
-       
-     
+
+
    for(node* curr = *root; curr->next != NULL; curr = curr->next)
      {
 
@@ -170,10 +172,10 @@
     {
       slow = slow->next;
       fast = fast->next->next;
-      if(fast ==slow)
+      if(fast == slow)
       {
         return 1;
       }
     }
-  return 0; 
+  return 0;
   }
