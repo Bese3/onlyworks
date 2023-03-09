@@ -24,7 +24,7 @@
 
    insert_end(&root , 3);
    insert_end(&root , 5);
-   insert_middle(root->next , 10);
+   insert_middle(root->next->next , 10);
    reverse(&root);
 
    //root->next->next = root;
@@ -180,17 +180,17 @@
    {
     node* prev = NULL;
     node* curr = *root;
-    
-       
+
+
      while(curr != NULL)
      {
        node* next = curr->next;
       curr->next = prev;
       prev = curr;
-      curr = next; 
-      
-     }  
-     *root = prev;   
+      curr = next;
+
+     }
+     *root = prev;
 
 
    }
