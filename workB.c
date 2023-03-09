@@ -23,14 +23,11 @@
 
 
    insert_end(&root , 3);
-   insert_end(&root , 4);
    insert_end(&root , 5);
-   insert_end(&root , 6);
-   delete_list(&root , 5);
-   delete_list(&root , 6);
-   insert_beginning(&root , 1);
+   insert_middle(root->next , 10);
+   reverse(&root);
 
-   root->next->next->next->next = root;
+   //root->next->next = root;
     int x = has_loop(root);
 
    if(x == 1)
@@ -114,7 +111,7 @@
     new_node->x = value;
     new_node->next = add->next;
     add->next = new_node;
-    add = new_node;
+    //add = new_node;
   }
   void insert_sorted(node** root , int value)
   {
@@ -179,3 +176,21 @@
     }
   return 0;
   }
+  void reverse(node** root)
+   {
+    node* prev = NULL;
+    node* curr = *root;
+    
+       
+     while(curr != NULL)
+     {
+       node* next = curr->next;
+      curr->next = prev;
+      prev = curr;
+      curr = next; 
+      
+     }  
+     *root = prev;   
+
+
+   }
