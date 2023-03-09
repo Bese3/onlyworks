@@ -50,7 +50,7 @@
         if(first_half->n != second_half->n){
             return 0;
             }
-            
+
             first_half = first_half->next;
             second_half = second_half->next;
      }
@@ -162,7 +162,6 @@ int main(void)
     add_nodeint_end(&head, 972);
     add_nodeint_end(&head, 17);
     add_nodeint_end(&head, 1);
-    //add_nodeint_end(&head, 1);
 
     print_listint(head);
 
