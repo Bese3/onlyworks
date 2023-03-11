@@ -17,17 +17,14 @@
   int main()
   {
    node* root = malloc(sizeof(node));
-   root->x = 2;
-   root->next = NULL;
-
-
+   root = NULL;
 
    insert_end(&root , 3);
    insert_end(&root , 5);
-   insert_middle(root->next->next , 10);
+   insert_middle(root->next , 10);
    reverse(&root);
 
-   //root->next->next = root;
+   root->next->next = root; //making a loop
     int x = has_loop(root);
 
    if(x == 1)
@@ -61,25 +58,31 @@
 
 
 
-  void  insert_end(node** root , int value)
-   {
-     node* new_node = malloc(sizeof(node));
-     if (new_node == NULL)
-     {
-        exit(1);
-     }
-     new_node->x = value;
-     new_node->next = NULL;
+void insert_end(node** root,  int value)
+{
+    node* new;
+    node* current;
 
+    current = *root;
 
-     node* curr = *root;
-     while(curr->next != NULL)
-     {
-        curr = curr->next;
-     }
-      curr->next = new_node;
-      new_node->next = NULL;
-   }
+    new = malloc(sizeof(listint_t));
+    if (new == NULL)
+        return;
+
+    new->x = value;
+    new->next = NULL;
+
+    if (*root == NULL)
+        *root = new;
+    else
+    {
+        while (current->next != NULL)
+            current = current->next;
+        current->next = new;
+    }
+
+  
+}
   void deallocate(node** root)
   {
    node* curr = *root;
@@ -180,17 +183,17 @@
    {
     node* prev = NULL;
     node* curr = *root;
-
-
+    
+       
      while(curr != NULL)
      {
        node* next = curr->next;
       curr->next = prev;
       prev = curr;
-      curr = next;
-
-     }
-     *root = prev;
+      curr = next; 
+      
+     }  
+     *root = prev;   
 
 
    }

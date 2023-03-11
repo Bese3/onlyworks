@@ -2,20 +2,7 @@
 #include<stdlib.h>
 #include"list.h"
 
-//  listint_t reverse_list(listint_t** head)
-//  {
-//     listint_t* prev = NULL;
-//     listint_t* curr  = *head;
-//      while(curr != NULL)
-//      {
-//         listint_t* next = curr->next;
-//         curr->next = prev;
-//         prev = curr;
-//         curr = next;
-//      }
-//      *head = prev;
-//      return (**head);
-//  }
+
 
 
  int is_palindrome(listint_t **head)
@@ -152,16 +139,16 @@ int main(void)
     listint_t *head;
 
     head = NULL;
-    add_nodeint_end(&head, 1);
-    add_nodeint_end(&head, 17);
-    add_nodeint_end(&head, 972);
-    add_nodeint_end(&head, 50);
-    add_nodeint_end(&head, 98);
-    add_nodeint_end(&head, 98);
-    add_nodeint_end(&head, 50);
-    add_nodeint_end(&head, 972);
-    add_nodeint_end(&head, 17);
-    add_nodeint_end(&head, 1);
+    // add_nodeint_end(&head, 1);
+    // add_nodeint_end(&head, 17);
+    // add_nodeint_end(&head, 972);
+    // add_nodeint_end(&head, 50);
+    // add_nodeint_end(&head, 98);
+    // add_nodeint_end(&head, 98);
+    // add_nodeint_end(&head, 50);
+    // add_nodeint_end(&head, 972);
+    // add_nodeint_end(&head, 17);
+    // add_nodeint_end(&head, 1);
 
     print_listint(head);
 
