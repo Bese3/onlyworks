@@ -89,7 +89,7 @@ void display(){
         
     }
     printf("\n\n");
-    for(int i = (n - 1); i >= 0; i--){
+    for(int i = (top); i >= 0; i--){
      printf("%d\n" , stack[i]);
     }
 
