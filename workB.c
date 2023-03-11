@@ -24,7 +24,7 @@
    insert_middle(root->next , 10);
    reverse(&root);
 
-   root->next->next = root; //making a loop
+   //root->next->next = root; //making a loop
     int x = has_loop(root);
 
    if(x == 1)
