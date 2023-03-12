@@ -10,11 +10,12 @@ void deletion(const int position);
 
 int main(){
     
-//  insertion(4 , 15);
-//  insertion(1 , 200);
-//  insertion(10 , 100);
+ insertion(4 , 15);
+ insertion(1 , 200);
+ insertion(10 , 100);
  deletion(9);
  deletion(3);
+ 
  
   for(int i = 0; i < size; i++)
      printf(" %d " , array[i]);
