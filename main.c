@@ -1,61 +1,42 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include<string.h>
+#define size 10
 
+int array[size] = {6,3,2,4,5,6,7,8,9,10};
 
+void insertion(const int position , int value);
+void deletion(const int position);
 
-
-
-
-int main()
-{
-   int num = 9;
-   int pc =num | 0b0110;
-   printf("%d" , pc);
-
-
-
-
+int main(){
+    
+//  insertion(4 , 15);
+//  insertion(1 , 200);
+//  insertion(10 , 100);
+ deletion(9);
+ deletion(3);
+ 
+  for(int i = 0; i < size; i++)
+     printf(" %d " , array[i]);
+    return 0;
+}
+void insertion(const int position , int value){        // insertion in array at given index(position - 1)
+    for(int i = (size - 1); i >= (position - 1); i--){
+     array[i + 1] = array[i];
+    }
+    array[position - 1] = value;
+   
+}
+void deletion(const int position){     // deletion in array at specified position
+    if((position - 1) < 0 || (position - 1) > (size  - 1)){
+        printf("Invalid\n");
+        return;
+    }
+    array[position - 1] = 0;
+    int i;
+    for(i = (position - 1); i < size; i++){
+        array[i] = array[i + 1];
+    }
+    array[i] = 0;
 
 }
-
-
-
-
-
-/*int merge(long int a[] ,  int i ,long int b[] , int j , long int r[]);
-
-int main()
-{
-    long int array1[] = {23,45,67,87,98};
-    long  int array2[] ={12,21,32,53,35};
-  long    int result[7];
-    int a = 5;
-    int b = 5;
-     merge(array1 , a, array2 ,b ,result);
-    for (int k=0;k < a+b;k++)
-        printf("%ld\n" , result[k]);
- return (0);
-}
-
-int merge(long int a[] ,  int i ,long int b[] , int j , long int r[])
-{
-  if (i != 0 && j!=0)
-  {
-      if (j==0 || a[i] < b[j])
-      {
-          r[0] = a[0];
-          merge(a+1,i-1 , b  , j ,r+1);
-
-      }
-      else if (i==0 || a[i] > b[j])
-      {
-          r[0] = b[0];
-          merge(a ,i , b+1 ,j-1,r+1);
-
-      }
-  }
-  else
-    return (0);
-
-}
-*/
