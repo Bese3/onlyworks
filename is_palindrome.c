@@ -35,6 +35,7 @@
      while(first_half != NULL && second_half != NULL)
      {
         if(first_half->n != second_half->n){
+            printf("%d is not equal to %d\n" , first_half->n , second_half->n);
             return 0;
             }
 
