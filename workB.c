@@ -27,12 +27,18 @@
    insert_sorted(&root , 0);
    insert_sorted(&root ,5);
    insert_sorted(&root , 7);
+   insert_sorted(&root , 0);
+   delete_list(&root);
+   delete_list_end(&root);
+   delete_list_end(&root);
+   delete_list_middle(&root , 4);  // the second parameter is position
 
 
 
 
 
-   //root->next->next = root; //making a loop
+
+  //  root->next->next = root; //making a loop
     int x = has_loop(root);
 
    if(x == 1)
@@ -66,7 +72,7 @@
 
 
 
-void insert_end(node** root,  int value)
+  void insert_end(node** root,  int value)
 {
     node* new;
     node* current;
@@ -106,11 +112,11 @@ void insert_end(node** root,  int value)
   void insert_beginning(node** root , int value)
   {
 
-    node* new_node  = malloc(sizeof(node));
+    node* new_node  = (node*) malloc(sizeof(node));
     if (new_node == NULL)
     {
-     exit(3);
-
+     printf("cannot allocate memory for new node\n");
+     return;
     }
     new_node->x = value;
     new_node->next = *root;
@@ -118,7 +124,7 @@ void insert_end(node** root,  int value)
   }
   void insert_middle(node* add , int value)
   {
-    node* new_node = malloc(sizeof(node));
+    node* new_node = (node*) malloc(sizeof(node));
     new_node->x = value;
     new_node->next = add->next;
     add->next = new_node;
@@ -143,34 +149,27 @@ void insert_end(node** root,  int value)
     }
     insert_middle(curr , value);
   }
-  void delete_list(node** root , int value)
+  void delete_list(node** root)
   {
-    if (*root == NULL)
-    {
+     // at the beginning
+     node* curr = *root;
+    
+      *root = (*root)->next;
+      free(curr);
       return;
-    }
-
-       /*if((*root)->x == value)
-          {
-           node* removed = *root;
-           (*root) = (*root)->next;
-           free(removed);
-           return;
-          }*/
-
-
-   for(node* curr = *root; curr->next != NULL; curr = curr->next)
+     
+  }
+  void delete_list_end(node** root)
+  {
+    node* curr  = *root;
+    while(curr->next->next != NULL)
      {
-
-         while(curr->next->x == value)
-          {
-           node* removed = curr->next;
-           curr->next = curr->next->next;
-           free(removed);
-           return;
-          }
-
+      curr = curr->next;
      }
+     node* temp = curr->next;
+     curr->next = NULL;
+     free(temp);
+
   }
   int has_loop(node* root)
   {
@@ -205,3 +204,20 @@ void insert_end(node** root,  int value)
 
 
    }
+  void delete_list_middle(node** root , const int position)
+  {
+    int i = 0;
+    node* curr = *root; 
+    while (i < (position - 1))
+    {
+      curr = curr->next;
+      i++;
+    }
+    node* new_node = curr->next->next;
+    node* temp = curr->next;
+    curr->next = new_node;
+    free(temp);
+
+
+
+  }

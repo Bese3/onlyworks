@@ -79,7 +79,7 @@ listint_t *add_nodeint_end(listint_t **head, const int n)
 
     current = *head;
 
-    new = malloc(sizeof(listint_t));
+    new = (listint_t*) malloc(sizeof(listint_t));
     if (new == NULL)
         return (NULL);
 
@@ -140,6 +140,7 @@ int main(void)
     listint_t *head;
 
     head = NULL;
+    add_nodeint_end(&head, 0);
     add_nodeint_end(&head, 1);
     add_nodeint_end(&head, 17);
     add_nodeint_end(&head, 972);
@@ -150,6 +151,7 @@ int main(void)
     add_nodeint_end(&head, 972);
     add_nodeint_end(&head, 17);
     add_nodeint_end(&head, 1);
+    add_nodeint_end(&head, 0);
 
     print_listint(head);
 

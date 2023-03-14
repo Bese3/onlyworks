@@ -11,8 +11,10 @@ typedef struct node{
   void deallocate(node** root);
   void insert_middle(node* add , int value);
   void insert_sorted(node** root , int value);
-  void delete_list(node** root , int value);
+  void delete_list(node** root);
   int has_loop(node* root);
+  void delete_list_end(node** root);
+  void delete_list_middle(node** root , const int position);
   void reverse(node** root);
 
 
