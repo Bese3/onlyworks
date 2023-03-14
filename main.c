@@ -9,14 +9,14 @@ void insertion(const int position , int value);
 void deletion(const int position);
 
 int main(){
-    
+
  insertion(4 , 15);
  insertion(1 , 200);
  insertion(10 , 100);
  deletion(9);
  deletion(3);
- 
- 
+
+
   for(int i = 0; i < size; i++)
      printf(" %d " , array[i]);
     return 0;
@@ -26,7 +26,7 @@ void insertion(const int position , int value){        // insertion in array at 
      array[i + 1] = array[i];
     }
     array[position - 1] = value;
-   
+
 }
 void deletion(const int position){     // deletion in array at specified position
     if((position - 1) < 0 || (position - 1) > (size  - 1)){

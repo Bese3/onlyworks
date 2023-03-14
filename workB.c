@@ -20,9 +20,17 @@
    root = NULL;
 
    insert_end(&root , 3);
-   insert_end(&root , 5);
-   insert_middle(root->next , 10);
-   reverse(&root);
+   insert_end(&root , 4);
+   insert_end(&root , 6);
+   insert_beginning(&root , 1);
+   insert_sorted(&root , 2);
+   insert_sorted(&root , 0);
+   insert_sorted(&root ,5);
+   insert_sorted(&root , 7);
+
+
+
+
 
    //root->next->next = root; //making a loop
     int x = has_loop(root);
@@ -126,7 +134,7 @@ void insert_end(node** root,  int value)
     node* curr = * root;
     while(curr->next != NULL)
     {
-      if (curr->next->x > value)
+      if (curr->next->x > value && curr->x <= value)
       {
         insert_middle(curr , value);
         return;
