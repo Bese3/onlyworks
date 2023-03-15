@@ -16,7 +16,7 @@
 
   int main()
   {
-   node* root = malloc(sizeof(node));
+   node* root =(node*) malloc(sizeof(node));
    root = NULL;
 
    insert_end(&root , 3);
@@ -31,7 +31,7 @@
    delete_list(&root);
    delete_list_end(&root);
    delete_list_end(&root);
-   delete_list_middle(&root , 4);  // the second parameter is position
+   delete_list_middle(&root , 5);
 
 
 
