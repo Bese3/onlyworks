@@ -1,0 +1,10 @@
+data struct
+alx (python OOP)
+database
+leetcode weekly
+campus(interfacing , datacom ,design project)
+
+2/3 day of the week alx with data struct
+3/2 day of the week alx with database
+weekend campus course with leetcode training
+
