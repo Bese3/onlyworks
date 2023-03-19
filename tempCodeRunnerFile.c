@@ -1,5 +1,4 @@
-   
-//  insertion(4 , 15);
-//  insertion(1 , 200);
-//  insertion(10 , 100);
-//  deletion(9);
+  //  delete_list(&root);
+  //  delete_list_end(&root);
+  //  delete_list_end(&root);
+  //  delete_list_middle(&root , 5);

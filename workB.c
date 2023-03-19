@@ -28,10 +28,10 @@
    insert_sorted(&root ,5);
    insert_sorted(&root , 7);
    insert_sorted(&root , 0);
-   delete_list(&root);
-   delete_list_end(&root);
-   delete_list_end(&root);
-   delete_list_middle(&root , 5);
+  //  delete_list(&root);
+  //  delete_list_end(&root);
+  //  delete_list_end(&root);
+  //  delete_list_middle(&root , 5);
 
 
 
