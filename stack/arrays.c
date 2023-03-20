@@ -3,7 +3,7 @@
 #include"stackA.h"
 #define n 10
 int stack[n];
-int top = -1;
+static int top = -1;
 
 int main()
 { 
