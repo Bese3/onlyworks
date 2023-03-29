@@ -1,44 +1,27 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include"stacklist.h"
+#include"monty.h"
 
   
 int main(){
    
 
    stack_t* root = NULL;
-   int choice;
-   int data;
-   do{
-    printf("\n");
-    printf("Stack with Linked List\n");
-    printf(" 1. Push\n 2. Pop\n 3. Display\n 4. Add\n 5. Swap\n");
-    scanf("%d" , &choice);
-    printf("############\n");
-    switch(choice){
-      case 1:
-       printf("Enter data:\n");
-       scanf("%d" , &data);
-       push(&root , data);
-       break;
-      case 2:
-       pop(&root);
-       break;
-      case 3:
-        display(root);
-        break;
-      case 4:
-        add(&root);
-        break;
-      case 5:
-        swap(&root);
-        break;
-      default:
-        printf("Error\n");
-        break;  
-    }
+   push(&root , 5);
+   push(&root , 4);
+   push(&root , 3);
+   push(&root , 2);
+   push(&root , 1);
+   pop(&root);
+    pop(&root);
+   
+   push(&root , 300);
+   add(&root);
+   add(&root);
+   swap(&root);
+   
+   display(root);
 
-   }while(choice <= 6);
    free_t(root);
 
 
@@ -96,7 +79,7 @@ stack_t* pop(stack_t** head){
  // printf("Poped out %d \n" , (*head)->n);
   stack_t* remove = (*head);  
   (*head) = (*head)->next;
-  (*head)->prev = NULL;
+  //(*head)->prev = NULL;
   free(remove);
   return(*head);
 

@@ -33,6 +33,15 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-
-
+extern int argc ;
+extern char *argv[];
+extern stack_t* push(stack_t** head , const int value);
+extern size_t display(stack_t* head);
+extern void free_t(stack_t* head);
+extern stack_t* pop(stack_t** head);
+extern stack_t* add(stack_t** head);
+extern stack_t* swap(stack_t** head);
+int process_lines(stack_t **stack , unsigned int line_numbers);
+int process_opcode(stack_t **stack , int line_number , char *opcodes[]);
+void m_push(stack_t **stack , unsigned int line_number , char *arg[]);
 #endif /*monty_h*/
