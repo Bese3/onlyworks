@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include"monty.h"
 
+
   
 int main(){
    
@@ -9,18 +10,13 @@ int main(){
    stack_t* root = NULL;
    push(&root , 5);
    push(&root , 4);
-   push(&root , 3);
-   push(&root , 2);
-   push(&root , 1);
-   pop(&root);
-    pop(&root);
-   
-   push(&root , 300);
-   add(&root);
-   add(&root);
+   add(&root);  
+   push(&root , 6);
    swap(&root);
    
    display(root);
+   
+  
 
    free_t(root);
 

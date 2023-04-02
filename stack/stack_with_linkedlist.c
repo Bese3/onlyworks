@@ -2,9 +2,9 @@
 #include<stdlib.h>
 #include"stacklist.h"
 
-  
+
 int main(){
-   
+
 
    stack_t* root = NULL;
    int choice;
@@ -35,14 +35,14 @@ int main(){
         break;
       default:
         printf("Error\n");
-        break;  
+        break;
     }
 
-   }while(choice <= 6);
+   }while(choice <= 5);
    free_t(root);
 
 
- 
+
 
 
  return 0;
@@ -61,7 +61,7 @@ stack_t* push(stack_t** head , const int value){
   if(!(*head)){
     (*head) = new_node;
     return new_node;
-  } 
+  }
 
   new_node->next = *head;
   (*head)->prev = new_node;
@@ -84,7 +84,7 @@ void free_t(stack_t* head){
   while(curr != NULL){
     stack_t* remove = curr;
     curr = curr->next;
-    free(remove); 
+    free(remove);
   }
 }
 stack_t* pop(stack_t** head){
@@ -94,7 +94,7 @@ stack_t* pop(stack_t** head){
     // return 0;
     }
  // printf("Poped out %d \n" , (*head)->n);
-  stack_t* remove = (*head);  
+  stack_t* remove = (*head);
   (*head) = (*head)->next;
   (*head)->prev = NULL;
   free(remove);
