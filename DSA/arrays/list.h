@@ -2,8 +2,9 @@
 #define LIST_H
 #include<ctype.h>
 
-void  insert(const int row , const int coulumn , int value);
+void  insert(const int row , const int column , int value);
 void display();
+void delete( const int row , const int  column);
 
 
 
