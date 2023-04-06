@@ -22,13 +22,13 @@ void insert(const int row  ,  const int column , int value){
         if( i != (row - 1)){
         for(int j = (width - 1); j >= (0); j--){
             a[i][j + 1] = a[i][j];
-            //printf("array[%d][%d] = array[%d][%d]\n" , i, j + 1 , i , j);
+            
         }
         }
         else if ( i == (row - 1)){
              for(int j = (width - 1); j >= (column - 1); j--){
             a[i][j + 1] = a[i][j];
-           //printf("array[%d][%d] = array[%d][%d]\n" , i, j + 1 , i , j);
+           
         }
 
         }
@@ -55,13 +55,13 @@ void delete(const int row , const int  column){
         if (i == (row - 1)){
         for(int j = (column - 1); j < width; j++){
             a[i][j] = a[i][j + 1];
-            printf("array[%d][%d] = array[%d][%d]\n" , i, j , i , j+1);
+           
       }
         }
         else if (i != (row - 1)){
              for(int j = 0; j < width; j++){
             a[i][j] = a[i][j + 1];
-            printf("array[%d][%d] = array[%d][%d]\n" , i, j , i , j+1);
+       
       }
 
         }
