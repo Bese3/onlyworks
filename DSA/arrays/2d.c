@@ -21,7 +21,7 @@ int main(int argc , char** argv[]){
      case 1:
          printf("Which Row And Column Do U Like To Update?\n");
          sleep(1);
-         printf("Row:\n");
+         printf("Row:");
          scanf("%d" , &row);
          printf("Column:");
          scanf("%d" , &column);
@@ -38,7 +38,7 @@ int main(int argc , char** argv[]){
      case 4:
          printf("Which Row And Column Do U Like To Delete?\n");
          sleep(1);
-         printf("Row:\n");
+         printf("Row:");
          scanf("%d" , &row);
          printf("Column:");
          scanf("%d" , &column);
