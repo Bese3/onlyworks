@@ -21,14 +21,15 @@
 
    insert_end(&root , 3);
    insert_end(&root , 4);
-   insert_end(&root , 6);
-   insert_beginning(&root , 1);
-   insert_sorted(&root , 2);
-   insert_sorted(&root , 0);
-   insert_sorted(&root ,5);
-   insert_sorted(&root , 7);
-   insert_sorted(&root , 0);
-  //  delete_list(&root);
+   insert_middle(root , 5);
+  //  insert_end(&root , 6);
+  //  insert_beginning(&root , 1);
+  //  insert_sorted(&root , 2);
+  //  insert_sorted(&root , 0);
+  //  insert_sorted(&root ,5);
+  //  insert_sorted(&root , 7);
+  //  insert_sorted(&root , 0);
+  // //  delete_list(&root);
   //  delete_list_end(&root);
   //  delete_list_end(&root);
   //  delete_list_middle(&root , 5);

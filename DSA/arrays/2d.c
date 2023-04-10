@@ -53,7 +53,8 @@ int main(int argc , char** argv[]){
 
 
    }while(choice == 1 || choice == 2 || choice == 3 || choice == 4 || choice == 5);
-
+ 
+ 
 
 
 
@@ -137,7 +138,7 @@ void traverse(){
   return;
 }
 
-void search(){
+void search(){     //linear search
     long int data;
     printf("Enter the number to search\n");
     scanf("%d" , &data);
@@ -156,3 +157,5 @@ void search(){
     return;
 
 }
+
+

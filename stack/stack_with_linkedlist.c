@@ -9,10 +9,14 @@ int main(){
    stack_t* root = NULL;
    int choice;
    int data;
+  //  push(&root , 5);
+  //  push(&root , 4);
+  //  add(&root);
+  //  display(root);
    do{
     printf("\n");
     printf("Stack with Linked List\n");
-    printf(" 1. Push\n 2. Pop\n 3. Display\n 4. Add\n 5. Swap\n");
+    printf(" 1. Push\n 2. Pop\n 3. Display\n 5. Add\n 6. Swap\n");
     scanf("%d" , &choice);
     printf("############\n");
     switch(choice){
@@ -27,10 +31,10 @@ int main(){
       case 3:
         display(root);
         break;
-      case 4:
+      case 5:
         add(&root);
         break;
-      case 5:
+      case 6:
         swap(&root);
         break;
       default:
@@ -38,7 +42,7 @@ int main(){
         break;
     }
 
-   }while(choice <= 5);
+   }while(choice  == 1 || choice == 2 || choice == 3 || choice == 4 || choice == 5);
    free_t(root);
 
 
@@ -96,13 +100,13 @@ stack_t* pop(stack_t** head){
  // printf("Poped out %d \n" , (*head)->n);
   stack_t* remove = (*head);
   (*head) = (*head)->next;
-  (*head)->prev = NULL;
+ // (*head)->prev = NULL;
   free(remove);
   return(*head);
 
 }
 stack_t* add(stack_t** head){
-  if((*head)->next == NULL){
+  if((*head)->next == NULL ||(*head) == NULL){
     printf("cant add single value\n");
     return (*head);
   }
