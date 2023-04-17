@@ -20,7 +20,7 @@ int main(int argc , char** argv[]){
 
      case 1:
          printf("Which Row And Column Do U Like To Update?\n");
-         sleep(1);
+        //  sleep(5);
          printf("Row:");
          scanf("%d" , &row);
          printf("Column:");
@@ -37,7 +37,7 @@ int main(int argc , char** argv[]){
          break;
      case 4:
          printf("Which Row And Column Do U Like To Delete?\n");
-         sleep(1);
+        // sleep(1);
          printf("Row:");
          scanf("%d" , &row);
          printf("Column:");
@@ -91,7 +91,7 @@ void insert(const int row  ,  const int column , int value){
 void display(){
     for(int i = 0; i < height; i++){
         for(int j = 0; j < width; j++){
-         printf(" %d  " , a[i][j]);
+         printf(" %d   " , a[i][j]);
         }
         printf("\n");
     }
@@ -131,7 +131,7 @@ void delete(const int row , const int  column){
 void traverse(){
  for(int i = 0; i < height; i++){
     for(int j = 0; j < width; j++){
-        printf("Enter the Array[%d][%d]:\n" , i , j);
+        printf("Enter the Array[%d][%d]:\n" , i + 1 , j + 1);
         scanf("%d" , &a[i][j]);
     }
  }

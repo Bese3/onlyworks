@@ -22,6 +22,7 @@
    insert_end(&root , 3);
    insert_end(&root , 4);
    insert_middle(root , 5);
+   insert_beginning(&root , 1);
   //  insert_end(&root , 6);
   //  insert_beginning(&root , 1);
   //  insert_sorted(&root , 2);

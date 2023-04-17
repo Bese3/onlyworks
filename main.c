@@ -20,7 +20,7 @@ int main(){
 void insertion(const int position , int value){        // insertion in array at given index(position - 1)
     for(int i = (size - 1); i >= (position - 1); i--){
      array[i + 1] = array[i];
-     printf("array[%d] = array[%d]\n" , i + 1 , i);
+    // printf("array[%d] = array[%d]\n" , i + 1 , i);
     }
     array[position - 1] = value;
 

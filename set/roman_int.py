@@ -1,4 +1,12 @@
 # Roman to integer converter 
+"""
+>>> roman_to_int('L')
+50
+>>> roman_to_int('LCI')
+5
+
+"""
+import doctest
 def roman_to_int(roman_string):
     if roman_string != str(roman_string) or roman_string is None or \
                roman_string == "":
@@ -14,4 +22,6 @@ def roman_to_int(roman_string):
         sum += R_string[roman_string[i]]
         i = i + 1
     return sum
+if __name__ == "__main__":
+    doctest.testmod()
         
