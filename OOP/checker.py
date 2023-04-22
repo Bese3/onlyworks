@@ -3,29 +3,18 @@ Node = __import__('singly_linked_list').Node
 
 sll = SinglyLinkedList()
 sl = Node()
-# sll.sorted_insert(2)
-# sll.sorted_insert(5)
-# sll.sorted_insert(3)
-# sll.sorted_insert(10)
-# sll.sorted_insert(1)
-# sll.sorted_insert(-4)
-# sll.sorted_insert(-3)
-# sll.sorted_insert(4)
-# sll.sorted_insert(5)
-# sll.sorted_insert(12)
-# sll.sorted_insert(3)
-sll.append(2)
+sll.appendmiddle(2)
+sll.append(3)
 sll.append(4)
 sll.append(6)
 sll.append(8)
 sll.appendleft(1)
 sll.appendleft(0)
-# sll.sorted_insert(3)
-# sll.sorted_insert(5)
-# sll.sorted_insert(7)
+
+
 
 a = sll.size()
-
+a = a + 1 - 1
 print(sll)
-print(sl)
-print("Size of linked list is {:d}" .format(a))
+# print(sl)
+print("Size of Linked List is {:d}" .format(a))

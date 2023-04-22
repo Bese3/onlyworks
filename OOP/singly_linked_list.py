@@ -1,4 +1,5 @@
 import doctest
+ 
 class Node:
     def __init__(self, data=None, next_node=None):
          self.__data = data
@@ -99,7 +100,4 @@ class SinglyLinkedList:
         return str(list)
         # return ('\n' .join(list))         
     
-if __name__ == "__main__":
-    doctest.testmod()
-
 
