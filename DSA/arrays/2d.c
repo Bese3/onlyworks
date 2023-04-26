@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include"list.h"
-#define width 3
-#define height 3
+#define width 10
+#define height 10
 int a[height][width] = {1,2,3 , 4,5,6 , 7,8,9};
 
 int main(int argc , char** argv[]){
@@ -63,7 +63,7 @@ int main(int argc , char** argv[]){
 
 void insert(const int row  ,  const int column , int value){
       if ((row < 1 || column < 1) || (row > height || column > width)){
-        printf("Enter a Value in the size of the Array\n");
+        printf("Your row or column is not in the size of the Array\n");
         return;
     }
 
@@ -100,7 +100,7 @@ void display(){
 
 void delete(const int row , const int  column){
     if ((row < 1 || column < 1) || (row > height || column > width)){
-        printf("Enter a Value in the size of the Array\n");
+        printf("Your row or column is not in the size of the Array\n");
         return;
     }
 
