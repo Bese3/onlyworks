@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include"list.h"
-#define width 10
-#define height 10
+#define width 3
+#define height 3
 int a[height][width] = {1,2,3 , 4,5,6 , 7,8,9};
 
 int main(int argc , char** argv[]){

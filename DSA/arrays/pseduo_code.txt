@@ -1,0 +1,18 @@
+"""""""
+Algorithm for inserting in the 2d array
+  >>> Take input from the user Row , Column  , Data
+  >>> Compute if the input row and column are  in the array size
+  >>> Starting from the end of the array we are going to shift the array by 1 until the we reach array[row - 1][column - 1]
+  >>> Then we finally put the data into the specified indecies of the array
+
+Algorithm for traversing in the 2d array 
+  >>> Create a nested loop one for row and one for column 
+  >>> For each loop take a user input and store it in the array
+
+Algorithm for searching in the 2d array(linear search)
+  >>> Again we use the alogorithm for traversing and we create nested loop
+  >>> Instead we use it for search in if conditions
+Alogrithm for deleting in the 2d array
+  >>> Taking input from user Row , Column
+  >>> Delete the value specified in the array[row - 1][column - 1]
+  >>> Create a loop starting from array[row][column] and shifting the values to the left by 1   
