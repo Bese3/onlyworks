@@ -13,6 +13,11 @@ typedef struct Ht_item
 } Ht_item;
 
 // Defines the HashTable.
+typedef struct LinkedList{
+    Ht_item* item;
+    struct LinkedList* next;
+}Linkedlist;
+
 typedef struct HashTable
 {
     // Contains an array of pointers to items.
@@ -22,10 +27,7 @@ typedef struct HashTable
     int count;
 } HashTable;
 
-typedef struct LinkedList{
-    Ht_item* item;
-    struct LinkedList* next;
-}Linkedlist;
+
 unsigned long hash_function(char* str);
 Ht_item* create_item(char* key , char* value);
 HashTable* create_table(int size);
@@ -39,4 +41,6 @@ Linkedlist* allocate_list();
 Linkedlist* linkedlist_insert(Linkedlist* list , Ht_item* item);
 Ht_item* linkedlist_remove(Linkedlist* list);
 void free_linkedlist(Linkedlist* list);
+Linkedlist** create_overflow_buckets(HashTable* table);
+void free_overflow_table(HashTable* table);
 #endif /*TEST_H*/

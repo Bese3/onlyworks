@@ -42,9 +42,11 @@ HashTable* create_table(int size){
  table->size = size;
  table->count = 0;
  table->items = (Ht_item**) calloc(table->size , sizeof(Ht_item));
+ 
  for (int i = 0; i < table->size; i++){
     table->items[i] = NULL;  
  }
+//  table->overflow_buckets = create_overflow_buckets(table);
  return table;
 }
 
@@ -182,3 +184,18 @@ void free_linkedlist(Linkedlist* list){
     }
 }
 
+// Linkedlist** create_overflow_buckets(HashTable* table){
+//     Linkedlist* buckets = (Linkedlist*) calloc(table->size , sizeof(Linkedlist*));
+//     for (int i = 0; i < table->size; i++){
+//         buckets[i] = NULL;
+//     }
+//     return &buckets;
+// }
+
+// void free_overflow_table(HashTable* table){
+//   Linkedlist* buckets = table->overflow_buckets;
+//   for(int i = 0; i < table->size; i++){
+//     free_linkedlist(buckets[i]);
+//   }
+//   free(buckets);
+// }
