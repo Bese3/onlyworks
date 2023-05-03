@@ -64,7 +64,7 @@ int main(void)
 
 
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index){
-    dlistint_t *curr = *head;
+     dlistint_t *curr = *head;
     int i = 0;
     if (index == 0){
         dlistint_t *remove = *head;
@@ -76,6 +76,20 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index){
     while( i < (index - 1)){
         curr = curr->next;
         i++;
+    }
+    if(curr->next == NULL){
+       dlistint_t* to_remove = curr;
+       curr = curr->prev;
+       curr->next = NULL;
+       free(to_remove);
+       return index;
+    }
+    else if(curr->next->next == NULL){
+        dlistint_t* to_remove = curr;
+        curr = curr->prev;
+        curr->next = curr->next->next;
+        free(to_remove);
+        return index;
     }
     dlistint_t *to_delete = curr->next;
     curr->next = curr->next->next;
