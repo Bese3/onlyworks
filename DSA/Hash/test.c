@@ -11,8 +11,9 @@ int main(){
     ht_insert(ht, (char *)"Hel", (char *)"Third address");
     ht_insert(ht, (char *)"Cau", (char *)"Fourth address");
 
-    print_search(ht , (char *)"Hel");
+    print_search(ht , (char *)"Cau");
     print_table(ht);
+    free_table(ht);
 
 
     return 0;
@@ -46,7 +47,7 @@ HashTable* create_table(int size){
  for (int i = 0; i < table->size; i++){
     table->items[i] = NULL;  
  }
-//  table->overflow_buckets = create_overflow_buckets(table);
+ table->overflow_buckets = create_overflow_buckets(table);
  return table;
 }
 
@@ -64,6 +65,7 @@ void free_table(HashTable* table){
         }
 
     }
+    free_overflow_table(table);
     free(table->items);
     free(table);
 }
@@ -95,16 +97,25 @@ void ht_insert(HashTable* table , char* key , char* value){
         strcpy(table->items[index]->value , value);
         return;
      }
+    else{
+     handle_collision(table , index , item);
+     return;
+    }
   }
 
 }
 char* ht_search(HashTable* table , char* key){
  int index = hash_function(key);
  Ht_item* item = table->items[index];
+ Linkedlist* head = table->overflow_buckets[index];
  if(item != NULL){
     if(strcmp(item->key  , key) == 0){
         return item->value;
     }
+    if(head == NULL)
+      return NULL;
+    item = head->item;
+    head = head->next;
  }
  return NULL;
 }
@@ -157,7 +168,7 @@ Linkedlist* linkedlist_insert(Linkedlist* list , Ht_item* item){
     if (!list)
         return NULL;
 
-    if (!list->next)
+    if (!(list->next))
         return NULL;
 
     Linkedlist* node = list->next;
@@ -184,18 +195,31 @@ void free_linkedlist(Linkedlist* list){
     }
 }
 
-// Linkedlist** create_overflow_buckets(HashTable* table){
-//     Linkedlist* buckets = (Linkedlist*) calloc(table->size , sizeof(Linkedlist*));
-//     for (int i = 0; i < table->size; i++){
-//         buckets[i] = NULL;
-//     }
-//     return &buckets;
-// }
+Linkedlist** create_overflow_buckets(HashTable* table){
+    Linkedlist** buckets = (Linkedlist**) calloc(table->size , sizeof(Linkedlist*));
+    for (int i = 0; i < table->size; i++){
+        buckets[i] = NULL;
+    }
+    return buckets;
+}
 
-// void free_overflow_table(HashTable* table){
-//   Linkedlist* buckets = table->overflow_buckets;
-//   for(int i = 0; i < table->size; i++){
-//     free_linkedlist(buckets[i]);
-//   }
-//   free(buckets);
-// }
+void free_overflow_table(HashTable* table){
+  Linkedlist** buckets = table->overflow_buckets;
+  for(int i = 0; i < table->size; i++){
+    free_linkedlist(buckets[i]);
+  }
+  free(buckets);
+}
+
+void handle_collision(HashTable* table , unsigned long index , Ht_item* item){
+    Linkedlist* head = table->overflow_buckets[index];
+    if(head == NULL){
+        head = allocate_list();
+        head->item  = item;
+        table->overflow_buckets[index] = head;
+        return;
+    }
+    table->overflow_buckets[index] = linkedlist_insert(head , item);
+    return;
+}
+

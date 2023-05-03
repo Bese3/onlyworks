@@ -43,4 +43,5 @@ Ht_item* linkedlist_remove(Linkedlist* list);
 void free_linkedlist(Linkedlist* list);
 Linkedlist** create_overflow_buckets(HashTable* table);
 void free_overflow_table(HashTable* table);
+void handle_collision(HashTable* table , unsigned long index , Ht_item* item);
 #endif /*TEST_H*/
