@@ -11,12 +11,12 @@ int main(int argc , char** argv[]){
    add_dnodeint_end(&head , 6);
    add_dnodeint_end(&head , 7);
    concatenate(tail , head);
-//    circular_linked(&head , 2);
-//    int x = has_loops(tail);
-//    if (x == 1){
-//     printf("list has loop\n");
-//     return 1;
-//    }
+   circular_linked(&head , 10);
+   int x = has_loops(tail);
+   if (x == 1){
+    printf("list has loop\n");
+    return 1;
+   }
     
    print_dlistint(tail);
    free(head);
@@ -136,11 +136,12 @@ dlistint_t* concatenate(dlistint_t* first_half , dlistint_t* second_half){
 }
 dlistint_t* circular_linked(dlistint_t** head , const int index){
     dlistint_t* new_list = (*head);
-    for(int i = 0; i < index; i++){
-       new_list = new_list->next;
-       i++;
+    int i = 0;
+    while(i < index && new_list->next != NULL){
+        new_list = new_list->next;
+        i++;
     }
-    if(new_list == NULL){
+    if(i != (index - 1)){
         printf("Enter a Number in the size of the list\n");
         return new_list;
     }
