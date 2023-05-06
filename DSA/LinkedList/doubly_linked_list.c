@@ -99,7 +99,7 @@ int main(int argc , char** argv[]){
 /// @param n   the value we add
 /// @return  the new list
  dlistint_t *add_dnodeint(dlistint_t **head, const int n){
-    dlistint_t *new_node  = (dlistint_t*) malloc(sizeof(dlistint_t));
+ dlistint_t *new_node  = (dlistint_t*) malloc(sizeof(dlistint_t));
      if (new_node == NULL){
         printf("cant allocate memory\n");
         return NULL;
