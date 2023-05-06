@@ -18,6 +18,9 @@ void free_dlistint(dlistint_t *head);
 dlistint_t* concatenate(dlistint_t* first_half , dlistint_t* second_half);
 dlistint_t* circular_linked(dlistint_t** head , const int index);
 int has_loops(dlistint_t* head);
+dlistint_t *add_dnodeint_mid(dlistint_t **head , const int index , const int value);
+dlistint_t * add_dnodeint_sorted(dlistint_t** head , int value);
+dlistint_t *reverse(dlistint_t**head);
 
 
 #endif/*header_h*/
