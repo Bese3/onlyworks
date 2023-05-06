@@ -80,14 +80,14 @@ int main(int argc , char** argv[]){
           break;
         default:
            printf("Invalid Choice\n");        
-
-          
-     } 
+        
+      } 
 
     
    }while(choice < 10 && choice > 0);
    
-   free(head);
+   free_dlistint(head);
+   free_dlistint(tail);
    
    
     return 0;
