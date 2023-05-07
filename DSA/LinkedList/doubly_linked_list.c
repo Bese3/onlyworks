@@ -186,6 +186,12 @@ dlistint_t *add_dnodeint_end(dlistint_t **head, const int n){
 dlistint_t* concatenate(dlistint_t* first_half , dlistint_t* second_half){
     dlistint_t* new_list;
     dlistint_t* curr = first_half;
+    int loop1 = has_loops(first_half);
+    int loop2 = has_loops(second_half);
+    if(loop1 == 1 || loop2 == 1){
+        printf("Cant Concatenate Circular Loops!!!\n");
+        return NULL;
+    }
     while(curr->next != NULL){
         curr = curr->next;
     }
@@ -205,12 +211,11 @@ dlistint_t* circular_linked(dlistint_t** head , const int index){
     while(i < index){
         if(new_list->next !=NULL)
           new_list = new_list->next;
-        printf("%d\n" , i);
-        i++;
+         i++;
     }
     int size  = size_of(*head);
     if(new_list == NULL && i != (size - 1)){
-        printf("Enter a Number in the size of the list\n");
+        printf("Enter a Number in the size of the List\n");
         return (*head);
     }
     new_list->next = (*head);
@@ -243,15 +248,16 @@ int has_loops(dlistint_t* head){
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index){
      dlistint_t *curr = *head;
      int size = print_dlistint(curr);
-     if (index > size){
-        printf("Please enter index in the size of the list\n");
+     if (index > size && index < 1){
+        printf("Please Enter Index in the size of the List\n");
         return size;
      }
     int i = 0;
-    if (index == 0){
+    if (index == 1){
         dlistint_t *remove = *head;
         (*head) = (*head)->next;
-        (*head)->prev = NULL;
+        (*head)->prev = remove->prev;
+        remove->prev->next = (*head);
         free(remove);
         return index;
     }
@@ -274,9 +280,10 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index){
         free(to_remove);
         return index;
     }
-    dlistint_t *to_delete = curr->next;
-    curr->next = curr->next->next;
-    curr->next->prev = curr;
+    dlistint_t *to_delete = curr;
+    curr = curr->next;
+    curr->prev = to_delete->prev;
+    to_delete->prev->next = curr;
     free(to_delete);
     return index;
 }
@@ -287,30 +294,40 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index){
 size_t print_dlistint(dlistint_t *h){
    int loop  = has_loops(h);
    dlistint_t *curr = h;
-   int size = size_of(h);
-   if (loop == 1){
-    printf("##### Circular Linked List #####\n"); 
-    for(int i = 0; i < size; i++){
-       printf("L[%d] = %d\n" ,i,curr->n);
-       curr = curr->next;
+   dlistint_t *slow = h;
+   dlistint_t *fast = h;
+   int i = 0;
+  
+  if(loop == 1){
+   printf("##### Circular Linked List #####\n"); 
+   while(fast != NULL && fast->next != NULL && fast->next->next != NULL){
+   slow = slow->next;
+   fast = fast->next->next;
+   printf("L[%d] = %d\n" ,i + 1,slow->prev->n);
+      if(slow == fast){
+        printf("##### End Linked List #####\n");
+        printf("Loop Exists in Your Linked List\n");
+        return i;
 
-    }
-    printf("##### End Linked List #####\n");
-    return size;
+     }
+     i++;
    }
-
+ }
+ 
+  
+  
    
    
    
    printf("##### Linked List #####\n"); 
   
-   int i = 0;
+   
     for(curr; curr != NULL; curr = curr->next){
-        printf("L[%d] = %d\n" ,i,curr->n);
+        printf("L[%d] = %d\n" ,i + 1,curr->n);
         i++;
     } 
     printf("##### End Linked List #####\n");
-    return size;
+    return i;
 }
 
 /// @brief frees the memory after use of a function in the list
@@ -356,11 +373,16 @@ dlistint_t * add_dnodeint_sorted(dlistint_t** head , int value){
 dlistint_t *reverse(dlistint_t** head){
     dlistint_t* prev = NULL;
     dlistint_t* curr = *head;
-    
+    dlistint_t* next = NULL;
+    int loop  = has_loops(*head);
+    if(loop == 1){
+        printf("Cant Reverse Circular Linked List!!!\n");
+        return NULL;
+    }
        
      while(curr != NULL)
      {
-       dlistint_t* next = curr->next;
+      next = curr->next;
       curr->next = prev;
       prev = curr;
       curr = next; 
@@ -372,10 +394,9 @@ dlistint_t *reverse(dlistint_t** head){
 size_t size_of(dlistint_t* head){
     dlistint_t* curr = head;
     size_t size = 0;
-    while(curr->next != NULL){
+   for(curr; curr->next != NULL; curr = curr->next){
         size++;
-        curr = curr->next;
-    }
+    } 
     return size;
 
 }
