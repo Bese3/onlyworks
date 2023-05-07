@@ -11,7 +11,7 @@ typedef struct dlistint_s
 } dlistint_t;
 
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index);
-size_t print_dlistint(const dlistint_t *h);
+size_t print_dlistint(dlistint_t *h);
 dlistint_t *add_dnodeint(dlistint_t **head, const int n);
 dlistint_t *add_dnodeint_end(dlistint_t **head, const int n);
 void free_dlistint(dlistint_t *head);
@@ -21,6 +21,12 @@ int has_loops(dlistint_t* head);
 dlistint_t *add_dnodeint_mid(dlistint_t **head , const int index , const int value);
 dlistint_t * add_dnodeint_sorted(dlistint_t** head , int value);
 dlistint_t *reverse(dlistint_t**head);
+
+
+
+
+dlistint_t *add_circular(dlistint_t** head , const int index , int value);
+size_t size_of(dlistint_t* head);
 
 
 #endif/*header_h*/

@@ -53,11 +53,6 @@ int main(int argc , char** argv[]){
           add_dnodeint_sorted(&head , data);
           break; 
         case 5:
-          loop  = has_loops(head);
-          if(loop = 1){
-            printf("The list has a loop cant be displayed\n");
-            return 1;
-          }
           print_dlistint(head);
           break; 
         case 6:
@@ -213,10 +208,11 @@ dlistint_t* circular_linked(dlistint_t** head , const int index){
         printf("%d\n" , i);
         i++;
     }
-    // if(new_list == NULL && i != (index - 1)){
-    //     printf("Enter a Number in the size of the list\n");
-    //     return new_list;
-    // }
+    int size  = size_of(*head);
+    if(new_list == NULL && i != (size - 1)){
+        printf("Enter a Number in the size of the list\n");
+        return (*head);
+    }
     new_list->next = (*head);
     (*head)->prev = new_list;
     return new_list;
@@ -229,10 +225,12 @@ int has_loops(dlistint_t* head){
     dlistint_t* fast = head;
     dlistint_t* slow = head;
     while(fast != NULL && fast->next != NULL && fast->next->next != NULL){
-       if(slow == fast)
-          return 1;
        slow = slow->next;
        fast = fast->next->next;
+       if(slow == fast){
+          printf("Linked List Linked\n");          
+          return 1;
+        }
     }
     return 0;   
 
@@ -286,16 +284,33 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index){
 /// @brief this function prints out the linked list
 /// @param h  the linked list to print out
 /// @return  size of the list
-size_t print_dlistint(const dlistint_t *h){
-   printf("#####Linked List#####\n"); 
-   const dlistint_t *curr = h;
+size_t print_dlistint(dlistint_t *h){
+   int loop  = has_loops(h);
+   dlistint_t *curr = h;
+   int size = size_of(h);
+   if (loop == 1){
+    printf("##### Circular Linked List #####\n"); 
+    for(int i = 0; i < size; i++){
+       printf("L[%d] = %d\n" ,i,curr->n);
+       curr = curr->next;
+
+    }
+    printf("##### End Linked List #####\n");
+    return size;
+   }
+
+   
+   
+   
+   printf("##### Linked List #####\n"); 
+  
    int i = 0;
     for(curr; curr != NULL; curr = curr->next){
         printf("L[%d] = %d\n" ,i,curr->n);
         i++;
     } 
-    printf("#####End Linked List#####\n");
-    return i;
+    printf("##### End Linked List #####\n");
+    return size;
 }
 
 /// @brief frees the memory after use of a function in the list
@@ -353,4 +368,14 @@ dlistint_t *reverse(dlistint_t** head){
      }  
      *head = prev;   
      return (*head);   
+}
+size_t size_of(dlistint_t* head){
+    dlistint_t* curr = head;
+    size_t size = 0;
+    while(curr->next != NULL){
+        size++;
+        curr = curr->next;
+    }
+    return size;
+
 }
