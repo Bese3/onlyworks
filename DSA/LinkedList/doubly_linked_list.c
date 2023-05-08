@@ -26,7 +26,7 @@ int main(int argc , char** argv[]){
      printf("  #    LinkedList Implementation     #\n");
      printf("  ####################################\n");
      printf(" 1. Insert at the beginning\n 2. Insert at the middle \n 3. Insert at the end\n 4. Insert sorted\n 5. Print the LS\n");
-     printf(" 6. Delete a LS\n 7. Concatenate lists\n 8. Circulate a list\n 9. Reverse a LS\n");
+     printf(" 6. Delete a LS\n 7. Concatenate lists\n 8. Circulate a list\n 9. Reverse a LS\n 10. Reset\n");
      scanf("%d" , &choice);
      switch(choice){
         case 1:
@@ -73,13 +73,18 @@ int main(int argc , char** argv[]){
         case 9:
           reverse(&head);
           break;
+        case 10:
+          free_dlistint(head);
+          head  = NULL;
+          break;  
         default:
-           printf("Invalid Choice\n");        
+           printf("Invalid Choice\n");   
+           break;     
         
       } 
 
     
-   }while(choice < 10 && choice > 0);
+   }while(choice < 11 && choice > 0);
    
    free_dlistint(head);
    free_dlistint(tail);
@@ -107,7 +112,13 @@ int main(int argc , char** argv[]){
         (*head) = new_node;
         return new_node;
     }
+    int loop  = has_loops(*head);
+    if(loop == 1){
+       add_dnodeint_mid(head , 0 , new_node->n);
+       return *head; 
+    }
     new_node->next = (*head);
+    new_node->prev = (*head)->prev;
     (*head)->prev = new_node;
     (*head) = new_node;
     return new_node;
@@ -192,6 +203,12 @@ dlistint_t* concatenate(dlistint_t* first_half , dlistint_t* second_half){
         printf("Cant Concatenate Circular Loops!!!\n");
         return NULL;
     }
+    if(first_half == NULL){
+       first_half = second_half;
+    //    first_half->next = second_half->next;
+       return first_half;
+
+    }
     while(curr->next != NULL){
         curr = curr->next;
     }
@@ -208,7 +225,12 @@ dlistint_t* concatenate(dlistint_t* first_half , dlistint_t* second_half){
 dlistint_t* circular_linked(dlistint_t** head , const int index){
     dlistint_t* new_list = (*head);
     int i = 0;
-    while(i < index){
+    int loop  =  has_loops(*head);
+    if(loop == 1){
+        printf("Cant Circulate again\n");
+        return NULL;
+    }
+    while(i < index - 1){
         if(new_list->next !=NULL)
           new_list = new_list->next;
          i++;
@@ -248,8 +270,8 @@ int has_loops(dlistint_t* head){
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index){
      dlistint_t *curr = *head;
      int size = print_dlistint(curr);
-     if (index > size && index < 1){
-        printf("Please Enter Index in the size of the List\n");
+     if (index > size || index < 1 || (*head) == NULL){
+        printf("Please Enter Index in the size of the List or add the List size\n");
         return size;
      }
     int i = 0;
@@ -337,7 +359,10 @@ void free_dlistint(dlistint_t *head){
     while(curr != NULL){
         dlistint_t *delete = curr;
         curr = curr->next;
+        free(delete->next);
+        free(delete->prev);
         free(delete);
+        delete = NULL;
     }
     return;
 
@@ -384,6 +409,7 @@ dlistint_t *reverse(dlistint_t** head){
      {
       next = curr->next;
       curr->next = prev;
+      curr->prev = next;    
       prev = curr;
       curr = next; 
       
