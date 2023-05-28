@@ -112,9 +112,5 @@ button_7.grid(row = 1 , column = 0)
 button_8.grid(row = 1 , column = 1)
 button_9.grid(row = 1 , column = 2)
 
-
-
-
-
 # mybutton = Button(root , text = "Enter!" , command = myclick , fg ="green" , bg = "black")
 root.mainloop()                
