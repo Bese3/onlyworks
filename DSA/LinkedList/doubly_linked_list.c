@@ -75,7 +75,6 @@ int main(int argc , char** argv[]){
           break;
         case 10:
           free_dlistint(head);
-          head  = NULL;
           break;  
         default:
            printf("Invalid Choice\n");   
@@ -255,7 +254,7 @@ int has_loops(dlistint_t* head){
        slow = slow->next;
        fast = fast->next->next;
        if(slow == fast){
-          printf("Linked List Linked\n");          
+          printf("Linked List Linked from %d -> %d\n" , slow->prev->n , slow->n);          
           return 1;
         }
     }
@@ -356,11 +355,30 @@ size_t print_dlistint(dlistint_t *h){
 /// @param head list to be freed
 void free_dlistint(dlistint_t *head){
     dlistint_t *curr = head;
+   
+    int loop = has_loops(head);
+    if(loop == 1){
+        while(curr->next != head){
+          curr = curr->next;
+        }
+        dlistint_t *temp = head;
+        while(temp != curr){
+            dlistint_t *delete = temp;
+            temp = temp->next;
+            free(delete);
+            delete = NULL;
+        }
+        free(temp);
+        temp = NULL;
+        return;        
+      
+        }
+
+
     while(curr != NULL){
         dlistint_t *delete = curr;
         curr = curr->next;
-        free(delete->next);
-        free(delete->prev);
+       
         free(delete);
         delete = NULL;
     }

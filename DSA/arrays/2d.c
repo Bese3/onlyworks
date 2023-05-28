@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 #include"list.h"
 #define width 3
 #define height 3
@@ -53,8 +54,8 @@ int main(int argc , char** argv[]){
 
 
    }while(choice == 1 || choice == 2 || choice == 3 || choice == 4 || choice == 5);
- 
- 
+
+
 
 
 
@@ -67,7 +68,7 @@ void insert(const int row  ,  const int column , int value){
         return;
     }
 
-    for(int i = (height - 1); i >= (row - 1); i--){
+   for(int i = (height - 1); i >= (row - 1); i--){
         if( i != (row - 1)){
           for(int j = (width - 1); j >= 0; j--){
                a[i][j + 1] = a[i][j];
@@ -146,7 +147,7 @@ void search(){     //linear search
         for(int j = 0; j < width; j++){
             if(a[i][j] == data){
                 printf("Found the number %d in the Array[%d][%d]\n" , data , (i + 1) , (j + 1));
-                return;
+                break;
             }
             else
                continue;

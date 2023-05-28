@@ -101,3 +101,8 @@ class SinglyLinkedList:
         # return ('\n' .join(list))         
     
 
+if __name__ == "__main__":
+    s = SinglyLinkedList()
+    s.append(7)
+    s.append(9)
+    print(s)

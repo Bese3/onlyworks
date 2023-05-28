@@ -21,19 +21,8 @@
 
    insert_end(&root , 3);
    insert_end(&root , 4);
-   insert_middle(root , 5);
-   insert_beginning(&root , 1);
-  //  insert_end(&root , 6);
-  //  insert_beginning(&root , 1);
-  //  insert_sorted(&root , 2);
-  //  insert_sorted(&root , 0);
-  //  insert_sorted(&root ,5);
-  //  insert_sorted(&root , 7);
-  //  insert_sorted(&root , 0);
-  // //  delete_list(&root);
-  //  delete_list_end(&root);
-  //  delete_list_end(&root);
-  //  delete_list_middle(&root , 5);
+
+   
 
 
 
@@ -81,10 +70,10 @@
 
     current = *root;
 
-    new = malloc(sizeof(listint_t));
+    new = (node*)malloc(sizeof(node));
     if (new == NULL)
         return;
-
+    
     new->x = value;
     new->next = NULL;
 
@@ -186,7 +175,7 @@
         return 1;
       }
     }
-  return 0;
+  return 0;    
   }
   void reverse(node** root)
    {
@@ -198,6 +187,7 @@
      {
        node* next = curr->next;
       curr->next = prev;
+
       prev = curr;
       curr = next; 
       
