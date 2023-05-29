@@ -8,6 +8,12 @@ entry = Entry(root ,width = 35 , borderwidth = 5)
 entry.grid(row = 0  ,column = 0 , columnspan = 15 , padx = 10 , pady = 10)
 # entry.insert(0 , "Enter your name")
 
+bg = PhotoImage(file = "K:\\alx\\ALX\\B\\onlyworks\\pics\\spider.png")
+  
+# Show image using label
+label1 = Label( root, image = bg)
+label1.place(x = 0, y = 50)
+
 def click(num):
     # entry.delete(0 , END)
     current = entry.get()
@@ -51,8 +57,7 @@ def equals():
     # if entry.get() is None:
     #     return
     
-    second = entry.get()
-    
+    second = entry.get()    
     entry.delete(0 , END)
 
     if calc == "addition":
