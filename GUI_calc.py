@@ -1,4 +1,5 @@
 from tkinter import *
+from PIL import ImageTk , Image
 
 
 root = Tk()
@@ -8,11 +9,11 @@ entry = Entry(root ,width = 35 , borderwidth = 5)
 entry.grid(row = 0  ,column = 0 , columnspan = 15 , padx = 10 , pady = 10)
 # entry.insert(0 , "Enter your name")
 
-bg = PhotoImage(file = "K:\\alx\\ALX\\B\\onlyworks\\pics\\spider.png")
+# bg = ImageTk.PhotoImage(Image.open("spider.png"))
   
 # Show image using label
-label1 = Label( root, image = bg)
-label1.place(x = 0, y = 50)
+# label1 = Label( root, image = bg)
+# label1.place(x = 0, y = 50)
 
 def click(num):
     # entry.delete(0 , END)
