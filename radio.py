@@ -8,13 +8,25 @@ root = Tk()
 root.title("Radio Button")
 root.geometry("400x400")
 def popup():
-    messagebox.showinfo("Danger Zone!!!", "You clicked Wrong")
+    response = messagebox.showerror("Danger Zone!!!", "are you sure?")
+    my_label = Label(root , text = response).pack()
+    # if response == 1:
+    #     messagebox.showinfo("Info" , "You clicked Yes")
+    #     my_label = Label(root , text = "Yes is being executed").pack()
+    #     return
+    # messagebox.showinfo("Info" , "You clicked NO")
+    # my_label = Label(root , text = "No is being executed").pack() 
+
 
 modes = [
    ("peperoni" , "peperoni"),
    ("cheese" , "cheese"),
    ("onion" , "onion")
    ]
+
+
+
+
 button1 = Button(root , text = "popup" , command = popup).pack()
 pizza = StringVar()
 pizza.set("onion")

@@ -2,7 +2,7 @@ from tkinter import *
 from PIL import ImageTk , Image
 root  = Tk()
 root.title("Image")
-root.geometry("400x400")
+root.geometry("490x550")
 
 
 img = ImageTk.PhotoImage(Image.open("K:\\alx\\ALX\\B\\onlyworks\\screen.jpg"))
