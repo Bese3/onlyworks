@@ -8,7 +8,7 @@ root = Tk()
 root.title("Radio Button")
 root.geometry("400x400")
 def popup():
-    response = messagebox.showerror("Danger Zone!!!", "are you sure?")
+    response = messagebox.askyesno("Danger Zone!!!", "are you sure?")
     my_label = Label(root , text = response).pack()
     # if response == 1:
     #     messagebox.showinfo("Info" , "You clicked Yes")

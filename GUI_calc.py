@@ -72,8 +72,7 @@ def equals():
         if int(second) == 0:
             entry.insert(0 , "Math ERROR")
             return
-        else:
-            entry.insert(0 , (f / int(second)))
+        entry.insert(0 , (f / int(second)))
            
 
 
