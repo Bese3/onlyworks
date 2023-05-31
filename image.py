@@ -2,7 +2,7 @@ from tkinter import *
 from PIL import ImageTk , Image
 root  = Tk()
 root.title("Image")
-root.geometry("300x300")
+root.geometry("400x400")
 
 
 img = ImageTk.PhotoImage(Image.open("K:\\alx\\ALX\\B\\onlyworks\\screen.jpg"))
@@ -14,7 +14,7 @@ list = [img , img1 , img2]
 status = Label(root , text =F" Image 1 of {str(len(list))}" , bd = 1 , relief= SUNKEN)
 
 label = Label(image = img)
-label.grid(row = 1 , column = 1 , ipadx=1 , ipady=1)
+label.grid(row = 0 , column = 1 , ipadx=1 , ipady=1)
 
 def forward(number):
     global label
@@ -26,15 +26,13 @@ def forward(number):
     button_forward = Button(root , text = ">>" , command = lambda : forward(number + 1))
     button_back = Button(root , text = "<<" , command = lambda : back(number - 1))
     status = Label(root , text =F" Image {number} of {str(len(list))}" , bd = 1 , relief= SUNKEN)
-
-  
     if number == len(list):
         button_forward = Button(root , text = ">>" , state = DISABLED)
        
-    label.grid(row = 1 , column = 1)
-    button_back.grid(row = 0 , column = 0 , padx = 2 , pady = 2)
-    button_forward.grid(row =  0 , column = 2 , padx = 2 , pady = 2)
-    status.grid(row = 2 , column = 2 , sticky = E)
+    label.grid(row = 0 , column = 1)
+    button_back.grid(row = 4, column = 0 , padx = 2 , pady = 2)
+    button_forward.grid(row =  4 , column = 2 , padx = 2 , pady = 2)
+    status.grid(row = 5 , column = 2 , sticky = E)
   
 
 
@@ -48,16 +46,14 @@ def back(number):
     button_forward = Button(root , text = ">>" , command = lambda : forward(number + 1))
     button_back = Button(root , text = "<<" , command = lambda : back(number - 1))
     status = Label(root , text =F" Image {number} of {str(len(list))}" , bd = 1 , relief= SUNKEN)
-
-
     if  number == 1:
         button_back = Button(root , text = "<<" , state = DISABLED)
   
     
-    button_back.grid(row = 0 , column = 0 , padx = 2 , pady = 2)
-    button_forward.grid(row =  0 , column = 2 , padx = 2 , pady = 2)
-    label.grid(row = 1 , column = 1)
-    status.grid(row = 2 , column = 2 , sticky = E)
+    button_back.grid(row = 4 , column = 0 , padx = 2 , pady = 2)
+    button_forward.grid(row =  4 , column = 2 , padx = 2 , pady = 2)
+    label.grid(row = 0 , column = 1)
+    status.grid(row = 5 , column = 2 , sticky = E)
 
 
  
@@ -73,10 +69,10 @@ button_forward = Button(root , text = ">>" , command  = lambda : forward(2))
 button_quit = Button(root , text = "Exit" , command = root.quit)
 
 
-button_quit.grid(row = 0 , column = 1 ,padx = 2 , pady = 2)
-button_back.grid(row = 0 , column = 0 , padx = 2 , pady = 2)
-button_forward.grid(row =  0 , column = 2 , padx = 2 , pady = 2)
-status.grid(row = 2 , column = 2 , sticky = E)
+button_quit.grid(row = 4 , column = 1 ,padx = 2 , pady = 2)
+button_back.grid(row = 4 , column = 0 , padx = 2 , pady = 2)
+button_forward.grid(row =  4 , column = 2 , padx = 2 , pady = 2)
+status.grid(row = 5 , column = 2 , sticky = E)
 
 
 
