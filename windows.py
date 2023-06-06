@@ -13,7 +13,7 @@ def add():
     global response
     global img
     response = root.filename = filedialog.askopenfilename(initialdir="onlyworks\pics" ,\
-      title = "Select a document" , filetypes=(("all files" , "*.*") , ("png files" , "*.png") ,("jpg files" , "*.jpg")))
+      title = "Select a document" , filetypes=(("all files" , "*.*") , ("png files" , "*.png")))
     img = ImageTk.PhotoImage(Image.open(str(response)))
     label1 = Label(root , image=img).pack()
 
